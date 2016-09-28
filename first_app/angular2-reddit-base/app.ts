@@ -35,7 +35,7 @@ class RedditApp {
     return false;
   }
 }
-
+console.log();
 @NgModule({
   declarations: [
     RedditApp
