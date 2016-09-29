@@ -35,7 +35,7 @@ import {platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 `
 })
 class ArticleComponent {
-  votes: number
+  votes: number;
   title: string;
   link: string;
   constructor() {
