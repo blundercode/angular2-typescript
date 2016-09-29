@@ -34,6 +34,22 @@ import {platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     </div>
 `
 })
+
+/**
+ * Article
+ */
+class Article {
+  title: string;
+  link: string;
+  votes: number;
+
+  constructor(title: string, link: string, votes?: number) {
+    this.title = title;
+    this.link = link;
+    this.votes = votes || 0
+  }
+}
+
 class ArticleComponent {
   votes: number;
   title: string;
@@ -43,11 +59,13 @@ class ArticleComponent {
     this.link = 'http://angular.io';
     this.votes = 10;
   }
-  voteUp() {
+  voteUp(): boolean {
     this.votes += 1;
+    return false
   }
-  voteDown() {
+  voteDown(): boolean {
     this.votes -= 1;
+    return false
   }
 } 
 
@@ -68,6 +86,10 @@ class ArticleComponent {
  <!-- added this button -->
    <button (click)="addArticle(newtitle, newlink)" class="ui positive right floated button">Submit link</button>
  </form>
+<div class="ui grid posts"> 
+  <reddit-article>
+  </reddit-article>
+</div>
 `
 })
 class RedditApp {
@@ -82,7 +104,8 @@ class RedditApp {
 console.log();
 @NgModule({
   declarations: [
-    RedditApp
+    RedditApp,
+    ArticleComponent 
   ],
   imports: [BrowserModule],
   bootstrap: [RedditApp]
