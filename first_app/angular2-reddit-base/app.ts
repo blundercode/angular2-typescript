@@ -7,8 +7,49 @@ import {
   Component
 } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
+@Component({
+  selector: 'reddit-article',
+  host: {
+    class: 'row'
+  },
+  template: `
+    <div class="four wide column center aligned votes">
+      <div class="ui statistic">
+        <div class="value">{{ votes }}</div>
+        <div class="label">Points</div>
+      </div>
+    </div>
+    <div class="twelve wide column">
+      <a class="ui large header" href="{{ link }}">{{ title }}</a>
+      <ul class="ui big horizontal list voters">
+        <li class="item">
+          <a href (click)="voteUp()"><i class="arrow up icon"></i>upvote</a>
+        </li>
+        <li class="item">
+          <a href (click)="voteDown()"><i class="arrow down icon"></i>downvote</a>
+        </li>
+      </ul>
+    </div>
+`
+})
+class ArticleComponent {
+  votes: number
+  title: string;
+  link: string;
+  constructor() {
+    this.title = 'Angular 2';
+    this.link = 'http://angular.io';
+    this.votes = 10;
+  }
+  voteUp() {
+    this.votes += 1;
+  }
+  voteDown() {
+    this.votes -= 1;
+  }
+} 
 
 @Component({
   selector: 'reddit',
@@ -32,6 +73,9 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 class RedditApp {
   addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
     console.log(`Adding article title: ${title.value} and link: ${link.value}`);
+    var a = 1;
+    console.log(a + 1);
+    console.log(a += 1);
     return false;
   }
 }
