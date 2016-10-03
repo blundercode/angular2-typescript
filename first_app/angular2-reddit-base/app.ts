@@ -9,6 +9,11 @@ import {
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
+/**
+ * 
+ * 
+ * @class Article
+ */
 @Component({
   selector: 'reddit-article',
   host: {
@@ -35,14 +40,38 @@ import {platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 `
 })
 
-/**
- * Article
- */
-class Article {
-  title: string;
-  link: string;
-  votes: number;
 
+class Article {
+  /**
+   * 
+   * 
+   * @type {string}
+   * @memberOf Article
+   */
+  title: string;
+  /**
+   * 
+   * 
+   * @type {string}
+   * @memberOf Article
+   */
+  link: string;
+  /**
+   * 
+   * 
+   * @type {number}
+   * @memberOf Article
+   */
+  votes: number;
+  /**
+   * Creates an instance of Article.
+   * 
+   * @param {string} title
+   * @param {string} link
+   * @param {number} [votes]
+   * 
+   * @memberOf Article
+   */
   constructor(title: string, link: string, votes?: number) {
     this.title = title;
     this.link = link;
@@ -50,25 +79,83 @@ class Article {
   }
 }
 
+/**
+ * 
+ * 
+ * @class ArticleComponent
+ */
+/**
+ * 
+ * 
+ * @class ArticleComponent
+ */
 class ArticleComponent {
+  /**
+   * 
+   * 
+   * @type {number}
+   * @memberOf ArticleComponent
+   */
   votes: number;
+  /**
+   * 
+   * 
+   * @type {string}
+   * @memberOf ArticleComponent
+   */
   title: string;
+  /**
+   * 
+   * 
+   * @type {string}
+   * @memberOf ArticleComponent
+   */
   link: string;
+  /**
+   * Creates an instance of ArticleComponent.
+   * 
+   * 
+   * @memberOf ArticleComponent
+   */
   constructor() {
     this.title = 'Angular 2';
     this.link = 'http://angular.io';
     this.votes = 10;
   }
+  /**
+   * 
+   * 
+   * @returns {boolean}
+   * 
+   * @memberOf ArticleComponent
+   */
   voteUp(): boolean {
     this.votes += 1;
     return false
   }
+  /**
+   * 
+   * 
+   * @returns {boolean}
+   * 
+   * @memberOf ArticleComponent
+   */
   voteDown(): boolean {
     this.votes -= 1;
     return false
   }
 } 
 
+/**
+ * 
+ * 
+ * @class RedditApp
+ */
+/**
+ * 
+ * 
+ * @class RedditApp
+ */
 @Component({
   selector: 'reddit',
   template: `
@@ -92,7 +179,17 @@ class ArticleComponent {
 </div>
 `
 })
+
 class RedditApp {
+  /**
+   * 
+   * 
+   * @param {HTMLInputElement} title
+   * @param {HTMLInputElement} link
+   * @returns {boolean}
+   * 
+   * @memberOf RedditApp
+   */
   addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
     console.log(`Adding article title: ${title.value} and link: ${link.value}`);
     var a = 1;
@@ -101,7 +198,12 @@ class RedditApp {
     return false;
   }
 }
-console.log();
+
+/**
+ * 
+ * 
+ * @class RedditAppModule
+ */
 @NgModule({
   declarations: [
     RedditApp,
